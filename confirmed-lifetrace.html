@@ -33,6 +33,10 @@
   color: var(--muted);
   margin: 24px 0 0;
 }
+/* 句のまとまりで折り返す。日本語は文字単位で折れるので、
+   放っておくと「…なりまし / た。」のように1文字だけ落ちる。 */
+.ph { display: inline-block; }
+.done p, .hint { text-wrap: balance; }
 .hint { margin-top: 18px; font-size: 13px; color: var(--muted); line-height: 1.8; }
 </style>
 </head>
@@ -42,18 +46,11 @@
   <div class="done">
     <div class="mark">✓</div>
     <h2>メールアドレスを確認しました</h2>
-    <p>LifeTrace にログインできるようになりました。<br>
-       アプリに戻って「ログイン」を選んでください。</p>
+    <p><span class="ph">LifeTrace に</span><span class="ph">ログインできるようになりました。</span><br><span class="ph">アプリに戻って</span><span class="ph">「ログイン」を選んでください。</span></p>
     <a class="open-btn" href="lifetrace://">LifeTrace を開く</a>
-    <p class="hint">
-      ボタンでアプリが開かないときは、ホーム画面から LifeTrace を起動してください。<br>
-      パソコンでこのページを開いた場合は、iPhone の LifeTrace からログインできます。
-    </p>
+    <p class="hint"><span class="ph">ボタンでアプリが開かないときは、</span><span class="ph">ホーム画面から LifeTrace を起動してください。</span><br><span class="ph">パソコンでこのページを開いた場合は、</span><span class="ph">iPhone の LifeTrace からログインできます。</span></p>
   </div>
-  <p style="font-size:13px;color:var(--muted);">
-    このページは LifeTrace のメールアドレス確認用です。
-    心当たりがない場合は、そのまま閉じていただいて構いません。
-  </p>
+  <p style="font-size:13px;color:var(--muted);"><span class="ph">このページは LifeTrace の</span><span class="ph">メールアドレス確認用です。</span><span class="ph">心当たりがない場合は、</span><span class="ph">そのまま閉じていただいて構いません。</span></p>
 </main>
 <script>
   // 開いた直後に一度だけアプリを起動しにいく。
