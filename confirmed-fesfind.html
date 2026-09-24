@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FesFind メールアドレスの確認 — MORI LAB</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.done {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 28px 24px;
+  margin: 24px 0;
+  text-align: center;
+}
+.done .mark { font-size: 40px; line-height: 1; margin-bottom: 12px; }
+.done h2 { margin: 0 0 8px; font-size: 19px; color: var(--fg); }
+.done p { margin: 0 0 20px; font-size: 15px; color: var(--muted); line-height: 1.8; }
+.open-btn {
+  display: inline-block;
+  padding: 13px 28px;
+  border-radius: 8px;
+  background: #1f6feb;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+}
+.app-name {
+  font-size: 13px;
+  letter-spacing: .08em;
+  color: var(--muted);
+  margin: 24px 0 0;
+}
+.hint { margin-top: 18px; font-size: 13px; color: var(--muted); line-height: 1.8; }
+</style>
+</head>
+<body>
+<main class="container">
+  <p class="app-name">FesFind</p>
+  <div class="done">
+    <div class="mark">✓</div>
+    <h2>メールアドレスを確認しました</h2>
+    <p>FesFind にログインできるようになりました。<br>
+       アプリに戻って「ログイン」を選んでください。</p>
+    <a class="open-btn" href="fesfind://">FesFind を開く</a>
+    <p class="hint">
+      ボタンでアプリが開かないときは、ホーム画面から FesFind を起動してください。<br>
+      パソコンでこのページを開いた場合は、iPhone の FesFind からログインできます。
+    </p>
+  </div>
+  <p style="font-size:13px;color:var(--muted);">
+    このページは FesFind のメールアドレス確認用です。
+    心当たりがない場合は、そのまま閉じていただいて構いません。
+  </p>
+</main>
+<script>
+  // 開いた直後に一度だけアプリを起動しにいく。
+  // 開けなければ何も起きず、上のボタンが残る（ページは表示されたまま）。
+  setTimeout(function () { location.href = "fesfind://"; }, 400);
+</script>
+</body>
+</html>
