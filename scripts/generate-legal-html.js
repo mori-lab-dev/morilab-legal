@@ -464,7 +464,22 @@ const indexHtml = `<!DOCTYPE html>
 
 files.push(["index.html", indexHtml]);
 
+// 2026-10-28: 公開中の HTML を正とする。下のページは公開 HTML に直接パッチを当てており、
+// このスクリプトの文面（LegalTexts.swift のミラー）は古い。流すと特商法の運営責任者が
+// 「非公開」に戻り、削除範囲・サブスク節・フレンド/クリップボード等の記述が消える。
+// 生成物で上書きするのは --force を付けたときだけ。LifeTrace の privacy/terms は未パッチなので対象外。
+const handMaintained = new Set([
+  "privacy-udonnavi.html", "privacy-fesfind.html",
+  "terms-udonnavi.html", "terms-fesfind.html",
+  "tokushoho-udonnavi.html", "tokushoho-lifetrace.html", "tokushoho-fesfind.html",
+]);
+const force = process.argv.includes("--force");
+
 for (const [name, content] of files) {
+  if (handMaintained.has(name) && !force) {
+    console.log("skip (公開HTMLが正)", name);
+    continue;
+  }
   fs.writeFileSync(path.join(ROOT, name), content, "utf8");
   console.log("wrote", name);
 }
